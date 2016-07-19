@@ -199,7 +199,7 @@
   [place = 'neighbourhood'],
   [place = 'isolated_dwelling'],
   [place = 'farm'] {
-    [zoom >= 15] {
+    [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
       text-fill: @placenames;
