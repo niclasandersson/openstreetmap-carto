@@ -1049,6 +1049,32 @@
       "advanced": {}
     },
     {
+      "name": "bicycle-routes",
+      "srs-name": "900913",
+      "geometry": "linestring",
+      "class": "",
+      "id": "bicycle-routes",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE route = 'bicycle'\n) AS bicycle_routes",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 7
+      },
+      "advanced": {}
+    },
+    {
       "name": "admin-low-zoom",
       "srs-name": "900913",
       "geometry": "linestring",
@@ -1937,6 +1963,32 @@
       "advanced": {}
     },
     {
+      "name": "bicycle-routes-text",
+      "srs-name": "900913",
+      "geometry": "linestring",
+      "class": "",
+      "id": "bicycle-routes-text",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    name\n  FROM planet_osm_line\n  WHERE route = 'bicycle'\n    AND name IS NOT NULL\n) AS bicycle_routes_text",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 13
+      },
+      "advanced": {}
+    },
+    {
       "name": "admin-text",
       "srs-name": "900913",
       "geometry": "linestring",
@@ -2101,6 +2153,7 @@
     "stations.mss",
     "amenity-points.mss",
     "ferry-routes.mss",
+    "bicycle-routes.mss",
     "aerialways.mss",
     "admin.mss",
     "addressing.mss"

@@ -50,7 +50,6 @@ Stylesheet:
   - "stations.mss"
   - "amenity-points.mss"
   - "ferry-routes.mss"
-  - "bicycle-routes.mss"
   - "aerialways.mss"
   - "admin.mss"
   - "addressing.mss"
@@ -723,6 +722,22 @@ Layer:
     properties:
       minzoom: 7
     advanced: {}
+  - id: "bicycle-routes"
+    name: "bicycle-routes"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE route = 'bicycle'
+        ) AS bicycle_routes
+    properties:
+      minzoom: 7
+    advanced: {}
   - id: "turning-circle-casing"
     name: "turning-circle-casing"
     class: ""
@@ -1335,22 +1350,6 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "bicycle-routes"
-    name: "bicycle-routes"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE route = 'bicycle'
-        ) AS bicycle_routes
-    properties:
-      minzoom: 7
     advanced: {}
   - name: "admin-low-zoom"
     id: "admin-low-zoom"
